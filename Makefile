@@ -27,8 +27,11 @@ OBJ_BONUS = $(SRCBONUS:sources_bonus/%.c=$(OBJ_BONUS_DIR)%.o)
 #MiniLibX
 MLX_PATH = ./mlx
 MLX = $(MLX_PATH)/libmlx_Linux.a
-# MLX_FLAG = -Lmlx -lmlx -lXext -lX11
-MLX_FLAG = -Lmlx -lmlx -framework OpenGL -framework AppKit
+MLX_FLAG = -Lmlx -lmlx -lXext -lX11
+# MLX_FLAG = -Lmlx -lmlx -framework OpenGL -framework AppKit
+
+start:
+	@make all
 
 # Ensure directories exist
 $(OBJ_DIR):
@@ -43,10 +46,10 @@ $(LIBFT):
 
 # Build Executable
 all: $(NAME)
-
+	@echo "\033[32m[Program is ready for use]\033[0m"
 
 $(NAME): $(LIBFT) $(OBJ_DIR) $(OBJ)
- 	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(MLX_FLAG) -o $(NAME)
+	@$(CC) $(CFLAGS) $(INC) $(OBJ) $(LIBFT) $(MLX_FLAG) -o $(NAME)
 
 # Rule to compile object files
 $(OBJ_DIR)%.o: sources/%.c | $(OBJ_DIR)
@@ -56,7 +59,7 @@ $(OBJ_DIR)%.o: sources/%.c | $(OBJ_DIR)
 bonus: $(NAME_BONUS)
 
 $(NAME_BONUS) : $(LIBFT) $(OBJ_BONUS_DIR) $(OBJ_BONUS)
-	$(CC) $(CFLAGS) $(OBJ_BONUS) $(LIBFT) $(MLX_FLAG) -o $(NAME_BONUS)
+	@$(CC) $(CFLAGS) $(INC_BONUS) $(OBJ_BONUS) $(LIBFT) $(MLX_FLAG) -o $(NAME_BONUS)
 
 $(OBJ_BONUS_DIR)%.o: sources_bonus/%.c | $(OBJ_BONUS_DIR)
 	@$(CC) $(CFLAGS) -c $< -o $@
@@ -72,7 +75,5 @@ fclean: clean
 
 re: fclean all
 
-start:
-	@make all
 
 .PHONY: start all clean fclean re bonus

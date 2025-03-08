@@ -1,4 +1,4 @@
-#include <mlx.h>
+#include "../mlx/mlx.h"
 
 int	main(void)
 {
