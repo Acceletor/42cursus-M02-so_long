@@ -31,23 +31,21 @@ MLX_FLAG = -Lmlx -lmlx -lXext -lX11
 
 # Ensure directories exist
 $(OBJ_DIR):
-	mkdir -p $(OBJ_DIR)
+	@mkdir -p $(OBJ_DIR)
 
 $(OBJ_BONUS_DIR):
-	mkdir -p $(OBJ_BONUS_DIR)
+	@mkdir -p $(OBJ_BONUS_DIR)
 
 # Build Libraries
 $(LIBFT):
 	@make -C ./libft
 
-$(MLX):
-	@make -C ./mlx
-
 # Build Executable
-all: $(NAME) $(LIBFT) $(MLX)
+all: $(NAME)
+
 
 $(NAME): $(LIBFT) $(OBJ_DIR) $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(MLX) -o $(NAME)
+ 	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(MLX_FLAG) -o $(NAME)
 
 # Rule to compile object files
 $(OBJ_DIR)%.o: sources/%.c | $(OBJ_DIR)
@@ -57,7 +55,7 @@ $(OBJ_DIR)%.o: sources/%.c | $(OBJ_DIR)
 bonus: $(NAME_BONUS)
 
 $(NAME_BONUS) : $(LIBFT) $(OBJ_BONUS_DIR) $(OBJ_BONUS)
-	$(CC) $(CFLAGS) $(OBJ_BONUS) $(LIBFT) $(MLX) -o $(NAME_BONUS)
+	$(CC) $(CFLAGS) $(OBJ_BONUS) $(LIBFT) $(MLX_FLAG) -o $(NAME_BONUS)
 
 $(OBJ_BONUS_DIR)%.o: sources_bonus/%.c | $(OBJ_BONUS_DIR)
 	@$(CC) $(CFLAGS) -c $< -o $@
@@ -71,7 +69,6 @@ clean:
 fclean: clean
 	@$(RM) $(NAME) $(NAME_BONUS)
 	@make fclean -C ./libft
-	@make clean -C ./mlx
 
 re: fclean all
 
