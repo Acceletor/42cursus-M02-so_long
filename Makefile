@@ -27,7 +27,8 @@ OBJ_BONUS = $(SRCBONUS:sources_bonus/%.c=$(OBJ_BONUS_DIR)%.o)
 #MiniLibX
 MLX_PATH = ./mlx
 MLX = $(MLX_PATH)/libmlx_Linux.a
-MLX_FLAG = -Lmlx -lmlx -lXext -lX11
+# MLX_FLAG = -Lmlx -lmlx -lXext -lX11
+MLX_FLAG = -Lmlx -lmlx -framework OpenGL -framework AppKit
 
 # Ensure directories exist
 $(OBJ_DIR):
@@ -64,7 +65,6 @@ $(OBJ_BONUS_DIR)%.o: sources_bonus/%.c | $(OBJ_BONUS_DIR)
 clean: 
 	@$(RM) -r $(OBJ_DIR) $(OBJ_BONUS_DIR)
 	@make clean -C ./libft
-	@make clean -C ./mlx
 
 fclean: clean
 	@$(RM) $(NAME) $(NAME_BONUS)
