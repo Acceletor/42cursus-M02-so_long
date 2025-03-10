@@ -25,9 +25,9 @@ OBJ = $(SRC:sources/%.c=$(OBJ_DIR)%.o)
 OBJ_BONUS = $(SRCBONUS:sources_bonus/%.c=$(OBJ_BONUS_DIR)%.o)
 
 #MiniLibX
-MLX_PATH = ./mlx
+MLX_PATH = ./minilibx-linux 
 MLX = $(MLX_PATH)/libmlx_Linux.a
-MLX_FLAG = -Lmlx -lmlx -lXext -lX11
+MLX_FLAG = -Lminilibx-linux -lmlx -lXext -lX11
 # MLX_FLAG = -Lmlx -lmlx -framework OpenGL -framework AppKit
 
 start:
