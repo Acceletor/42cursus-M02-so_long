@@ -3,7 +3,7 @@ NAME_BONUS = so_long_bonus
 
 # Directories
 LIBFT = ./libft/libft.a
-# PRINTF = ./printf/libftprintf.a
+PRINTF = ./printf/libftprintf.a
 INC = -I ./include/
 INC_BONUS = -I ./include_bonus/
 OBJ_DIR = obj/
@@ -47,12 +47,15 @@ $(OBJ_BONUS_DIR):
 $(LIBFT):
 	@make -C ./libft
 
+$(PRINTF):
+	@make -C ./printf
+
 # Build Executable
 all: $(NAME)
 	@echo "\033[32m[Program is ready for use]\033[0m"
 
-$(NAME): $(LIBFT) $(OBJ_DIR) $(OBJ)
-	@$(CC) $(CFLAGS) $(INC) $(OBJ) $(LIBFT) $(MLX_FLAG) -o $(NAME)
+$(NAME): $(LIBFT) $(OBJ_DIR) $(OBJ) $(PRINTF)
+	@$(CC) $(CFLAGS) $(INC) $(OBJ) $(LIBFT) $(PRINTF) $(MLX_FLAG) -o $(NAME)
 
 # Rule to compile object files
 $(OBJ_DIR)%.o: sources/%.c | $(OBJ_DIR)
@@ -61,8 +64,8 @@ $(OBJ_DIR)%.o: sources/%.c | $(OBJ_DIR)
 # Bonus Compilation
 bonus: $(NAME_BONUS)
 
-$(NAME_BONUS) : $(LIBFT) $(OBJ_BONUS_DIR) $(OBJ_BONUS)
-	@$(CC) $(CFLAGS) $(INC_BONUS) $(OBJ_BONUS) $(LIBFT) $(MLX_FLAG) -o $(NAME_BONUS)
+$(NAME_BONUS) : $(LIBFT) $(OBJ_BONUS_DIR) $(OBJ_BONUS) $(PRINTF)
+	@$(CC) $(CFLAGS) $(INC_BONUS) $(OBJ_BONUS) $(LIBFT) $(PRINTF) $(MLX_FLAG) -o $(NAME_BONUS)
 
 $(OBJ_BONUS_DIR)%.o: sources_bonus/%.c | $(OBJ_BONUS_DIR)
 	@$(CC) $(CFLAGS) -c $< -o $@
@@ -75,6 +78,7 @@ clean:
 fclean: clean
 	@$(RM) $(NAME) $(NAME_BONUS)
 	@make fclean -C ./libft
+	@make fclean -C ./printf
 
 re: fclean all
 
