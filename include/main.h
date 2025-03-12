@@ -6,7 +6,7 @@
 /*   By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 14:16:16 by ksuebtha          #+#    #+#             */
-/*   Updated: 2025/03/12 14:26:05 by ksuebtha         ###   ########.fr       */
+/*   Updated: 2025/03/12 16:50:37 by ksuebtha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,19 @@
 
 typedef struct s_player
 {
-    int x;
-    int y;
-} t_player;
+	int	x;
+	int	y;
+}	t_player;
+
+typedef struct s_component
+{
+	int	wall;
+	int	c;
+	int	e;
+	int	p;
+
+}		t_component;
+
 
 typedef struct s_map
 {
@@ -41,6 +51,7 @@ typedef struct s_map
 	char	*map;
 	int		height;
 	int		width;
+	char	**grid;
 
 }			t_map;
 
