@@ -6,7 +6,7 @@
 /*   By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 14:16:16 by ksuebtha          #+#    #+#             */
-/*   Updated: 2025/03/12 16:50:37 by ksuebtha         ###   ########.fr       */
+/*   Updated: 2025/03/12 18:20:40 by ksuebtha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,24 @@ typedef struct s_map
 	char	**grid;
 
 }			t_map;
+
+// map reader
+void	what_map_size(int fd, t_map *map);
+char	**create_map_grid(t_map *map);
+
+// map validator
+bool	component_error(char **map);
+bool	check_walls(char **map, int width, int height);
+bool	is_map_error(char *argv, t_map *map);
+
+// map component
+void	count_components(char **map, t_component *comp);
+void	map_init(t_map *map);
+
+// map utils
+void	free_map(char **grid);
+void	print_grid(char **grid);
+
 
 
 #endif

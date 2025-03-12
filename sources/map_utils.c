@@ -1,35 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/12 13:18:27 by ksuebtha          #+#    #+#             */
-/*   Updated: 2025/03/12 18:15:38 by ksuebtha         ###   ########.fr       */
+/*   Created: 2025/03/12 18:10:45 by ksuebtha          #+#    #+#             */
+/*   Updated: 2025/03/12 18:20:44 by ksuebtha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/main.h"
 
-int	main(int argc, char **argv)
+void	free_map(char **grid)
 {
-	t_map	map;
+	int	i;
 
-	if (argc != 2)
+	if (!grid)
+		return ;
+	i = 0;
+	while (grid[i])
 	{
-		ft_printf("Invalid Argument: Usage ./so_long map1.ber");
-		exit(1);
+		free(grid[i]);
+		i++;
 	}
-	map_init(&map);
-	if (is_map_error(argv[1], &map))
+	free(grid);
+}
+
+void	print_grid(char **grid)
+{
+	int	i;
+
+	if (!grid)
 	{
-		ft_printf("Error: not valid");
-		exit(1);
+		ft_printf("Error: Null grid\n");
+		return ;
 	}
-	ft_printf("map:\n");
-	print_grid(map.grid);
-	free_map(map.grid);
-	free(map.map);
-	return (0);
+	i = 0;
+	while (grid[i])
+	{
+		ft_printf("%s\n", grid[i]);
+		i++;
+	}
 }
