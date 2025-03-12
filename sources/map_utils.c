@@ -6,7 +6,7 @@
 /*   By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 18:10:45 by ksuebtha          #+#    #+#             */
-/*   Updated: 2025/03/12 18:20:44 by ksuebtha         ###   ########.fr       */
+/*   Updated: 2025/03/12 21:32:33 by ksuebtha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,27 @@ void	print_grid(char **grid)
 		ft_printf("%s\n", grid[i]);
 		i++;
 	}
+}
+
+char	**ft_strdup_2d(t_map *map)
+{
+	int		i;
+	char	**new_map;
+
+	new_map = malloc(sizeof(char *) * (map->height + 1));
+	if (!new_map)
+		return (NULL);
+	i = 0;
+	while (map->grid[i])
+	{
+		new_map[i] = ft_strdup(map->grid[i]);
+		if (!new_map[i])
+		{
+			free_map(new_map);
+			return (NULL);
+		}
+		i++;
+	}
+	new_map[i] = NULL;
+	return (new_map);
 }

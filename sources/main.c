@@ -6,7 +6,7 @@
 /*   By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 13:18:27 by ksuebtha          #+#    #+#             */
-/*   Updated: 2025/03/12 18:15:38 by ksuebtha         ###   ########.fr       */
+/*   Updated: 2025/03/12 21:25:21 by ksuebtha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ int	main(int argc, char **argv)
 		ft_printf("Error: not valid");
 		exit(1);
 	}
-	ft_printf("map:\n");
-	print_grid(map.grid);
+	// ft_printf("map:\n");
+	// print_grid(map.grid);
 	free_map(map.grid);
 	free(map.map);
 	return (0);
