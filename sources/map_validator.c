@@ -6,16 +6,14 @@
 /*   By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 18:10:40 by ksuebtha          #+#    #+#             */
-/*   Updated: 2025/03/12 18:20:53 by ksuebtha         ###   ########.fr       */
+/*   Updated: 2025/03/12 19:15:38 by ksuebtha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/main.h"
 
-bool	component_error(char **map)
+bool	component_error(char **map, t_component	comp)
 {
-	t_component	comp;
-
 	comp.wall = 0;
 	comp.c = 0;
 	comp.e = 0;
@@ -52,7 +50,8 @@ bool	check_walls(char **map, int width, int height)
 
 bool	is_map_error(char *argv, t_map *map)
 {
-	int		fd;
+	int			fd;
+	t_component	comp;
 
 	fd = open(argv, O_RDONLY);
 	if (fd == -1)
@@ -64,9 +63,16 @@ bool	is_map_error(char *argv, t_map *map)
 	map->grid = create_map_grid(map);
 	if (!map->grid)
 		return (true);
-	if (component_error(map->grid))
+	if (component_error(map->grid, comp))
 		return (true);
 	if (check_walls(map->grid, map->width, map->height))
 		return (true);
+	// if (!is_collectable_valid(comp, map->grid))
+	// 	return (true);
 	return (false);
 }
+
+// bool	is_collectable_valid(t_component comp, char **map)
+// {
+	
+// }

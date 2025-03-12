@@ -18,7 +18,7 @@ RM = rm -f
 SRCBASE = main map_components map_reader map_utils map_validator 
 SRC = $(addsuffix .c, $(addprefix sources/, $(SRCBASE))) \
 		get_next_line/get_next_line.c  \
-		get_next_line/get_next_line_utils.c
+		get_next_line/get_next_line_utils.c 
 
 SRCADD = $(SRCBASE) #add additional file
 SRCBONUS = $(addsuffix _bonus.c, $(addprefix sources_bonus/, $(SRCADD)))

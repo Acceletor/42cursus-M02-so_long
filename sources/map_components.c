@@ -6,11 +6,18 @@
 /*   By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 18:10:42 by ksuebtha          #+#    #+#             */
-/*   Updated: 2025/03/12 18:14:23 by ksuebtha         ###   ########.fr       */
+/*   Updated: 2025/03/12 19:10:53 by ksuebtha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/main.h"
+
+void	player_position(t_component *comp, int x, int y)
+{
+	comp->player.x = x;
+	comp->player.y = y;
+	comp->p += 1;
+}
 
 void	count_components(char **map, t_component *comp)
 {
@@ -30,7 +37,7 @@ void	count_components(char **map, t_component *comp)
 			else if (map[i][j] == 'E')
 				comp->e++;
 			else if (map[i][j] == 'P')
-				comp->p++;
+				player_position(comp, j, i);
 			else if (map[i][j] != '0')
 				return ;
 			j++;
