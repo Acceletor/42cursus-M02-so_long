@@ -6,7 +6,7 @@
 /*   By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 14:16:16 by ksuebtha          #+#    #+#             */
-/*   Updated: 2025/03/13 14:19:02 by ksuebtha         ###   ########.fr       */
+/*   Updated: 2025/03/13 19:34:56 by ksuebtha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,26 @@
 # define ESC    65307
 # define WD_NAME "so_long"
 
+
+typedef struct s_animation
+{
+	void				*img;
+	int					w;
+	int					h;
+	struct s_animation	*next;
+}						t_animation;
+
 typedef struct s_player
 {
-	int	x;
-	int	y;
+	t_animation	*idle;
+	t_animation	*run;
+	t_animation	*active;
+	int			run_frames;
+	int			idle_frames;
+	int			x;
+	int			y;
+	int			move;
+	int			move_count;
 }	t_player;
 
 typedef struct s_component
@@ -54,8 +70,20 @@ typedef struct s_map
 	int		height;
 	int		width;
 	char	**grid;
-
 }			t_map;
+
+typedef struct s_vars
+{
+	void		*mlx;
+	void		*win;
+	t_map		*map;
+	t_player	*p1;
+	t_animation	*collect;
+	t_animation	*wall;
+	t_animation	*base;
+	t_animation	*exit;
+	bool		end;
+}	t_vars;
 
 // map reader
 void	what_map_size(int fd, t_map *map);
