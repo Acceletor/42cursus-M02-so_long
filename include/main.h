@@ -6,7 +6,7 @@
 /*   By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 14:16:16 by ksuebtha          #+#    #+#             */
-/*   Updated: 2025/03/12 21:38:57 by ksuebtha         ###   ########.fr       */
+/*   Updated: 2025/03/13 14:19:02 by ksuebtha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct s_component
 	int			e;
 	int			p;
 	t_player	player;
+	bool		is_valid;
 
 }		t_component;
 

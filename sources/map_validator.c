@@ -6,7 +6,7 @@
 /*   By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 18:10:40 by ksuebtha          #+#    #+#             */
-/*   Updated: 2025/03/12 21:40:38 by ksuebtha         ###   ########.fr       */
+/*   Updated: 2025/03/13 14:20:14 by ksuebtha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,12 @@ bool	component_error(char **map, t_component	*comp)
 	comp->p = 0;
 	comp->player.x = 0;
 	comp->player.y = 0;
+	comp->is_valid = true;
 
 	count_components(map, comp);
 
-	if (comp->e != 1 || comp->p != 1 || comp->c < 1)
+	if (comp->e != 1 || comp->p != 1 || comp->c < 1
+		|| !comp->is_valid)
 		return (true);
 	return (false);
 }
@@ -85,7 +87,6 @@ bool	is_map_error(char *argv, t_map *map)
 	t_component	comp;
 
 	ft_bzero(&comp, sizeof(t_component));
-
 	fd = open(argv, O_RDONLY);
 	if (fd == -1)
 		return (true);

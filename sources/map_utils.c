@@ -6,7 +6,7 @@
 /*   By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 18:10:45 by ksuebtha          #+#    #+#             */
-/*   Updated: 2025/03/12 21:32:33 by ksuebtha         ###   ########.fr       */
+/*   Updated: 2025/03/13 13:17:03 by ksuebtha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	free_map(char **grid)
 
 	if (!grid)
 		return ;
+
 	i = 0;
 	while (grid[i])
 	{

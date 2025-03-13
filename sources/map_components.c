@@ -6,7 +6,7 @@
 /*   By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 18:10:42 by ksuebtha          #+#    #+#             */
-/*   Updated: 2025/03/12 19:10:53 by ksuebtha         ###   ########.fr       */
+/*   Updated: 2025/03/13 14:18:42 by ksuebtha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	count_components(char **map, t_component *comp)
 			else if (map[i][j] == 'P')
 				player_position(comp, j, i);
 			else if (map[i][j] != '0')
-				return ;
+				comp->is_valid = false;
 			j++;
 		}
 		i++;
@@ -51,4 +51,5 @@ void	map_init(t_map *map)
 	map->height = 0;
 	map->width = 0;
 	map->map = NULL;
+	map->grid = NULL;
 }
