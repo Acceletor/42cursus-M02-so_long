@@ -25,7 +25,7 @@ typedef struct s_animation
 	struct s_animation	*next;
 }						t_animation;
 
-typedef struct s_player
+typedef struct s_p
 {
 	t_animation	*idle;
 	t_animation	*run;
@@ -34,8 +34,14 @@ typedef struct s_player
 	int			idle_frames;
 	int			x;
 	int			y;
-	int			move;
+	bool		move;
 	int			move_count;
+}	t_p;
+
+typedef struct s_player
+{
+	int x;
+	int y;
 }	t_player;
 
 typedef struct s_component
@@ -59,18 +65,29 @@ typedef struct s_map
 	char	**grid;
 }			t_map;
 
+typedef struct s_portal
+{
+	t_animation	*disabled;
+	t_animation	*enabled;
+	t_animation	*active;
+	int			x;
+	int			y;
+}t_portal;
+
 typedef struct s_vars
 {
 	void		*mlx;
 	void		*win;
 	t_map		*map;
-	t_player	*p1;
+	t_p			*p1;
 	t_animation	*collect;
-	t_animation	*wall;
+	t_animation	*tree;
 	t_animation	*base;
-	t_animation	*exit;
+	t_portal	*exit;
 	bool		end;
 }	t_vars;
+
+
 
 // map reader
 void	what_map_size(int fd, t_map *map);
@@ -92,6 +109,36 @@ void	free_map(char **grid);
 void	print_grid(char **grid);
 char	**ft_strdup_2d(t_map *map);
 
+// game
+void main_display(t_vars *vars);
+int callbacks(t_vars *vars);
+int	quit(t_vars *vars);
+int	game_start(t_map *map);
 
+// game_utils
+void	vars_nuller(t_vars *vars);
+char * pather(char *main, int i, char *end, t_vars* vars);
+void add_new_frame(t_vars *vars, char *path, t_animation *sprite);
+void add_frames(t_vars *vars, char* path, t_animation *sprite);
+
+//loader
+void load_base(t_vars *vars);
+void load_tree(t_vars *vars);
+int	loadgame(t_vars *vars);
+
+//frees
+void free_animation(t_animation *anime, t_vars *vars);
+void free_vars(t_vars *vars);
+void free_game(t_vars *vars);
+
+//renders
+void base_render(t_vars *vars);
+
+//trees
+void list_tree_img(t_vars *vars, t_animation *tree);
+void tree_render(t_vars *vars);
+
+//player
+void load_p1(t_vars *vars);
 
 #endif
