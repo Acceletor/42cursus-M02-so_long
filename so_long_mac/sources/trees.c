@@ -16,37 +16,38 @@ void list_tree_img(t_vars *vars, t_animation *tree)
     }
 }
 
-// void tree_put_image(t_vars *vars, int x, int y, int index)
-// {
-//     int i;
-//     i = 0;
-//     while (i++ < index)
-//         mlx_put_image_to_window(vars->mlx, vars->win, vars->tree->img, x, y);
-// }
-
-// void set_tree(t_vars *vars, int i, int j)
-// {
-//     if (i == 0 && j != vars->map->width)
-//         tree_put_image(vars, j * vars->base->w, i * vars->base->h, 1);
-
-// }
-
-
+// Center horizontally
 void tree_put_image(t_vars *vars, int x, int y)
 {
-    int offset_x = (vars->base->w - vars->tree->w) / 2; // Center horizontally
+    int offset_x;
 
+    offset_x = (vars->base->w - vars->tree->w) / 2; 
     mlx_put_image_to_window(vars->mlx, vars->win, vars->tree->img, x + offset_x, y);
-
+}
+void tree_put_if_adjacent(t_vars *vars, int i, int j, int x, int y)
+{
+    if (i + 1 < vars->map->height && vars->map->grid[i + 1][j] == '1')
+        tree_put_image(vars, x, y + vars->tree->h / 2);
+    if (j + 1 < vars->map->width && vars->map->grid[i][j + 1] == '1')
+        tree_put_image(vars, x + (vars->base->w / 2) + 
+            ((vars->base->w - vars->tree->w) / 6), y);
+    if (i + 1 < vars->map->height && j + 1 < vars->map->width &&
+        vars->map->grid[i + 1][j + 1] == '1' && 
+        vars->map->grid[i][j + 1] == '1' && 
+        vars->map->grid[i + 1][j] == '1')
+        tree_put_image(vars, x + (vars->base->w / 2) + 
+            ((vars->base->w - vars->tree->w) / 6), y + vars->tree->h / 2);
 }
 
 void set_tree(t_vars *vars, int i, int j)
-{ // Place trees only at the top row or other conditions
-    int x = j * vars->base->w + (vars->base->w - vars->tree->w) / 2;
-    int y = i * vars->base->h; // Align properly in the grid
+{ 
+    int x;
+    int y;
 
+    x = j * vars->base->w + (vars->base->w - vars->tree->w) / 2;
+    y = i * vars->base->h;
     tree_put_image(vars, x, y);
-
+    tree_put_if_adjacent(vars, i, j, x, y);
 }
 
 void tree_render(t_vars *vars)
@@ -62,10 +63,6 @@ void tree_render(t_vars *vars)
         {
             if (vars->map->grid[i][j] == '1')
             {
-                // mlx_put_image_to_window(vars->mlx, vars->win,
-                //                         vars->tree->img,
-                //                         j * vars->base->w ,
-                //                         i * vars->base->h);
                 set_tree(vars, i, j);
             }
             j++;
