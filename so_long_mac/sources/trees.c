@@ -26,28 +26,28 @@ void tree_put_image(t_vars *vars, int x, int y)
 }
 void tree_put_if_adjacent(t_vars *vars, int i, int j, int x, int y)
 {
-    
+    int tree_offset_x;
+    int tree_offset_y;
+
+    tree_offset_x = (vars->base->w / 2) + ((vars->base->w - vars->tree->w) / 6);
+    tree_offset_y = vars->tree->h / 2;
     if (i + 1 < vars->map->height && vars->map->grid[i + 1][j] == '1')
-        tree_put_image(vars, x, y + vars->tree->h / 2);
+        tree_put_image(vars, x, y + tree_offset_y);
     if (j + 1 < vars->map->width && vars->map->grid[i][j + 1] == '1')
-        tree_put_image(vars, x + (vars->base->w / 2) + 
-            ((vars->base->w - vars->tree->w) / 6), y);
+        tree_put_image(vars, x + tree_offset_x, y);
     if (i + 1 < vars->map->height && j + 1 < vars->map->width &&
         vars->map->grid[i + 1][j + 1] == '1' && 
         vars->map->grid[i][j + 1] == '1' && 
         vars->map->grid[i + 1][j] == '1')
-        tree_put_image(vars, x + (vars->base->w / 2) + 
-            ((vars->base->w - vars->tree->w) / 6), y + vars->tree->h / 2);
+        tree_put_image(vars, x + tree_offset_x, y + tree_offset_y);
     if (i + 1 < vars->map->height && j + 1 < vars->map->width &&
         vars->map->grid[i + 1][j + 1] == '1' &&
         vars->map->grid[i + 1][j] != '1')
-        tree_put_image(vars, x + ((vars->base->w / 2) +
-            ((vars->base->w - vars->tree->w) / 6)), y + vars->tree->h / 2);
+        tree_put_image(vars, x + tree_offset_x, y + tree_offset_y);
     if (i + 1 < vars->map->height && j + 1 < vars->map->width &&
         vars->map->grid[i + 1][j - 1] == '1' &&
         vars->map->grid[i + 1][j] != '1')
-    tree_put_image(vars, x - ((vars->base->w / 2) +
-            ((vars->base->w - vars->tree->w) / 6)), y + vars->tree->h / 2);
+        tree_put_image(vars, x - tree_offset_x, y + tree_offset_y);
 }
 
 void set_tree(t_vars *vars, int i, int j)

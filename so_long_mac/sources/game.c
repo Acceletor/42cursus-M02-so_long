@@ -29,6 +29,29 @@ int callbacks(t_vars *vars)
 	return (0);
 }
 
+void update_p_pos(int keycode, t_p *p1)
+{
+	if (keycode == KEY_W)
+			p1->y -= SPEED;
+	if (keycode == KEY_S)
+			p1->y += SPEED;
+	if (keycode == KEY_A)
+			p1->x -= SPEED;
+	if (keycode == KEY_D)
+			p1->x += SPEED;
+	p1->move = 1;
+}
+
+
+int keypress(int keycode,t_vars *vars)
+{
+	if (keycode == ESC)
+		quit(vars);
+	if (keycode == KEY_W || keycode == KEY_A || keycode == KEY_D || keycode == KEY_S)
+		update_p_pos(keycode, vars->p1);
+	return (0);
+}
+
 int	quit(t_vars *vars)
 {
 	mlx_destroy_window(vars->mlx, vars->win);
@@ -56,6 +79,7 @@ int	game_start(t_map *map)
 	vars_nuller(vars);
 	loadgame(vars);
 	mlx_loop_hook(vars->mlx, callbacks, vars);
+	mlx_hook(vars->win, 2, 0, keypress, vars);
 	mlx_hook(vars->win, 17, 0, quit, vars);
 	mlx_loop(vars->mlx);
 	return (0);
