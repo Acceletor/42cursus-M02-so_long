@@ -76,7 +76,7 @@ bool	is_collectable_valid(t_component *comp, t_map *map)
 	if (!temp_map)
 		return (false);
 	flood_fill(temp_map, comp->player.x, comp->player.y, comp);
-	print_grid(temp_map);
+	// print_grid(temp_map);
 	free_map(temp_map);
 	return (comp->c == 0 && comp->e == 0);
 }

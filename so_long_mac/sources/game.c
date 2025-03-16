@@ -15,7 +15,15 @@ int callbacks(t_vars *vars)
 	// game_check()
 	mlx_clear_window(vars->mlx, vars->win);
 	main_display(vars);
-
+	if (vars->p1->move == false)
+		vars->p1->active = vars->p1->idle;
+	else
+		vars->p1->active = vars->p1->run;
+	// if (vars->exit->exit == true)
+	// 	vars->exit->active = vars->exit->enabled;
+	// else
+	// 	vars->exit->active = vars->exit->disabled;
+	mlx_put_image_to_window(vars->mlx, vars->win,vars->p1->active->img, vars->p1->x, vars->p1->y);
     if (vars->end == true)
         quit(vars);
 	return (0);

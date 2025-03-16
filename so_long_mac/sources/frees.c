@@ -12,12 +12,25 @@ void free_animation(t_animation *anime, t_vars *vars)
 	}
 }
 
+void free_player(t_p *player, t_vars *vars)
+{
+	if (player)
+	{
+		free_animation(player->run, vars);
+		free_animation(player->idle, vars);
+		free_animation(player->active, vars);
+		free(player);
+	}
+}
+
+
 void free_vars(t_vars *vars)
 {
 	if (vars)
 	{
 		free_animation(vars->base, vars);
         free_animation(vars->tree, vars);
+		free_player(vars->p1, vars);
 		free(vars);
 	}
 }
@@ -37,3 +50,4 @@ void free_game(t_vars *vars)
 	}
 	exit(0);
 }
+

@@ -69,9 +69,10 @@ typedef struct s_portal
 {
 	t_animation	*disabled;
 	t_animation	*enabled;
-	t_animation	*active;
+	t_animation	*active; //status of the exit
 	int			x;
 	int			y;
+	bool		exit; 
 }t_portal;
 
 typedef struct s_vars
@@ -139,6 +140,9 @@ void list_tree_img(t_vars *vars, t_animation *tree);
 void tree_render(t_vars *vars);
 
 //player
-void load_p1(t_vars *vars);
+void	load_p1(t_vars *vars);
+void	load_p1_idle(t_vars *vars, t_animation *sprite);
+void	load_p1_run(t_vars *vars, t_animation *sprite);
+void	load_p1_anims(t_vars *vars);
 
 #endif

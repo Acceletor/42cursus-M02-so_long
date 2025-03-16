@@ -29,6 +29,7 @@ int	main(int argc, char **argv)
 		free(map.map);
 		exit(1);
 	}
+	print_grid(map.grid);
 	game_start(&map);
 	ft_printf("Pass\n");
 	free_map(map.grid);

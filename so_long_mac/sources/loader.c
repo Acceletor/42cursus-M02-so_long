@@ -35,10 +35,12 @@ int	loadgame(t_vars *vars)
 		load_base(vars);
 	if (!vars->tree)
 		load_tree(vars);
-	// if (!vars->p1)
-	// 	load_p1(vars);
-    // if (!vars->exit)
-    //     load_exit(vars);
+	if (!vars->p1)
+		load_p1(vars);
+    // // if (!vars->exit)
+    // //     load_exit(vars);
+	if (!vars->p1->idle && !vars->p1->run)
+		load_p1_anims(vars);
 	
 	return (0);
 }
