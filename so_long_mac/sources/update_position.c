@@ -11,6 +11,8 @@ bool over_boundary(int x, int y, t_vars *vars)
             return false; // Tree detected → Block movement
         current = current->next;
     }
+    
+
 
     return false; // Safe to move
 }
