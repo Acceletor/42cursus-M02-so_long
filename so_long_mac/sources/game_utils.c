@@ -7,6 +7,7 @@ void	vars_nuller(t_vars *vars)
 	vars->collect = NULL;
 	vars->p1 = NULL;
 	vars->exit = NULL;
+    vars->tree_pos = NULL;
 }
 
 char * pather(char *main, int i, char *end, t_vars* vars)

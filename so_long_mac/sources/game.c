@@ -1,8 +1,6 @@
 #include "../include/main.h"
 
 
-
-
 void main_display(t_vars *vars)
 {
 	base_render(vars);
@@ -29,26 +27,12 @@ int callbacks(t_vars *vars)
 	return (0);
 }
 
-void update_p_pos(int keycode, t_p *p1)
-{
-	if (keycode == KEY_W)
-			p1->y -= SPEED;
-	if (keycode == KEY_S)
-			p1->y += SPEED;
-	if (keycode == KEY_A)
-			p1->x -= SPEED;
-	if (keycode == KEY_D)
-			p1->x += SPEED;
-	p1->move = 1;
-}
-
-
 int keypress(int keycode,t_vars *vars)
 {
 	if (keycode == ESC)
 		quit(vars);
 	if (keycode == KEY_W || keycode == KEY_A || keycode == KEY_D || keycode == KEY_S)
-		update_p_pos(keycode, vars->p1);
+		update_p_pos(keycode, vars->p1, vars);
 	return (0);
 }
 

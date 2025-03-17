@@ -75,6 +75,13 @@ typedef struct s_portal
 	bool		exit; 
 }t_portal;
 
+typedef struct s_tree_pos
+{
+    int x;
+    int y;
+    struct s_tree_pos *next;
+} t_tree_pos;
+
 typedef struct s_vars
 {
 	void		*mlx;
@@ -85,9 +92,9 @@ typedef struct s_vars
 	t_animation	*tree;
 	t_animation	*base;
 	t_portal	*exit;
+	t_tree_pos 	*tree_pos;
 	bool		end;
 }	t_vars;
-
 
 
 // map reader
@@ -144,5 +151,8 @@ void	load_p1(t_vars *vars);
 void	load_p1_idle(t_vars *vars, t_animation *sprite);
 void	load_p1_run(t_vars *vars, t_animation *sprite);
 void	load_p1_anims(t_vars *vars);
+
+//update_position
+void update_p_pos(int keycode, t_p *p1, t_vars *vars);
 
 #endif

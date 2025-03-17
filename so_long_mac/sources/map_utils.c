@@ -40,9 +40,11 @@ void	print_grid(char **grid)
 	i = 0;
 	while (grid[i])
 	{
-		ft_printf("%s\n", grid[i]);
+		if (grid[i])
+			ft_printf("%s\n", grid[i]);
 		i++;
 	}
+	ft_printf("\n");
 }
 
 char	**ft_strdup_2d(t_map *map)
