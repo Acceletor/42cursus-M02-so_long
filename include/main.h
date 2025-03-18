@@ -6,7 +6,7 @@
 /*   By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 14:16:16 by ksuebtha          #+#    #+#             */
-/*   Updated: 2025/03/18 14:49:36 by ksuebtha         ###   ########.fr       */
+/*   Updated: 2025/03/18 16:35:45 by ksuebtha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ char	**ft_strdup_2d(t_map *map);
 
 // frees
 void	free_animation(t_animation *anime, t_vars *vars);
+void	free_player(t_player *player, t_vars *vars);
 void	free_vars(t_vars *vars);
 void	free_game(t_vars *vars);
 
@@ -121,7 +122,14 @@ void	vars_nuller(t_vars *vars);
 
 //loader
 void	load_base(t_vars *vars);
+void	load_tree(t_vars *vars);
 int		loadgame(t_vars *vars);
+
+//player
+void	init_player(t_vars *vars);
+void	load_p1_idle(t_vars *vars, t_animation *sprite);
+void	load_p1_run(t_vars *vars, t_animation *sprite);
+void	load_p1_img(t_vars *vars);
 
 //renders
 void	base_render(t_vars *vars);
