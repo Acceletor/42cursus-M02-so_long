@@ -6,7 +6,7 @@
 /*   By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 14:14:44 by ksuebtha          #+#    #+#             */
-/*   Updated: 2025/03/18 17:18:02 by ksuebtha         ###   ########.fr       */
+/*   Updated: 2025/03/18 18:39:24 by ksuebtha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ int	callbacks(t_vars *vars)
 	mlx_clear_window(vars->mlx, vars->win);
 	main_display(vars);
 
+	if (vars->end == true)
+		quit(vars);
 	return (0);
 }
 
@@ -40,7 +42,9 @@ int	game_start(t_map *map)
 
 	vars = malloc(sizeof(t_vars));
 	if (!vars)
-		free_game(vars);
+	{
+		exit (1);
+	}
 	vars->end = false;
 	vars->map = map;
 	vars->mlx = mlx_init();

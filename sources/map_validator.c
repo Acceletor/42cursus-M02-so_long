@@ -6,7 +6,7 @@
 /*   By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 18:10:40 by ksuebtha          #+#    #+#             */
-/*   Updated: 2025/03/13 14:20:14 by ksuebtha         ###   ########.fr       */
+/*   Updated: 2025/03/18 18:01:42 by ksuebtha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ bool	is_collectable_valid(t_component *comp, t_map *map)
 	if (!temp_map)
 		return (false);
 	flood_fill(temp_map, comp->player.x, comp->player.y, comp);
-	print_grid(temp_map);
+	// print_grid(temp_map);
 	free_map(temp_map);
 	return (comp->c == 0 && comp->e == 0);
 }

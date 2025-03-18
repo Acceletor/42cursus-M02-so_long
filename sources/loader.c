@@ -6,7 +6,7 @@
 /*   By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 14:17:22 by ksuebtha          #+#    #+#             */
-/*   Updated: 2025/03/18 17:18:52 by ksuebtha         ###   ########.fr       */
+/*   Updated: 2025/03/18 19:14:52 by ksuebtha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	load_base(t_vars *vars)
 	if (!vars->base)
 		free_game(vars);
 	vars->base->img = mlx_xpm_file_to_image(vars->mlx,
-			"./textures/empty_space/ground.xpm",
+			"./textures1/empty_space/ground.xpm",
 			&vars->base->w, &vars->base->h);
 	if (!vars->base->img)
 	{
@@ -47,7 +47,6 @@ void	load_tree(t_vars *vars)
 }
 
 
-
 int	loadgame(t_vars *vars)
 {
 	if (!vars->base)
@@ -56,7 +55,7 @@ int	loadgame(t_vars *vars)
 		load_tree(vars);
 	if (!vars->p1)
 		init_player(vars);
-	if (!vars->p1->idle)
+	if (!vars->p1->idle && vars->p1)
 		load_p1_img(vars);
 
 

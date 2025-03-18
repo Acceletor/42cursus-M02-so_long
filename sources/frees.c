@@ -6,7 +6,7 @@
 /*   By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 14:08:01 by ksuebtha          #+#    #+#             */
-/*   Updated: 2025/03/18 17:14:58 by ksuebtha         ###   ########.fr       */
+/*   Updated: 2025/03/18 19:14:22 by ksuebtha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,11 @@ void	free_animation(t_animation *anime, t_vars *vars)
 	while (anime)
 	{
 		next = anime->next;
-		if (anime->img && vars->mlx)
+		if (anime->img)
+		{
 			mlx_destroy_image(vars->mlx, anime->img);
+			anime->img = NULL;
+		}
 		free(anime);
 		anime = next;
 	}
@@ -42,11 +45,20 @@ void	free_vars(t_vars *vars)
 	if (!vars)
 		return ;
 	if (vars->base)
+	{
 		free_animation(vars->base, vars);
+		vars->base = NULL;
+	}
 	if (vars->tree)
+	{
 		free_animation(vars->tree, vars);
+		vars->tree = NULL;
+	}
 	if (vars->p1)
+	{
 		free_player(vars->p1, vars);
+		vars->p1 = NULL;
+	}
 	free(vars);
 }
 
@@ -60,17 +72,19 @@ void	free_game(t_vars *vars)
 	{
 		if (vars->map->grid)
 			free_map(vars->map->grid);
-		free(vars->map);
+		free(vars->map->map);
 		vars->map = NULL;
 	}
-	if (vars->win)
+	if (vars->win && vars->mlx)
 		mlx_destroy_window(vars->mlx, vars->win);
-
 	if (vars->mlx)
 	{
 		mlx_destroy_display(vars->mlx);
-		free(vars->mlx);                
+		free(vars->mlx);
+		vars->mlx = NULL;
 	}
-	free_vars(vars);
+	if (vars)
+		free_vars(vars);
 	exit(1);
 }
+
