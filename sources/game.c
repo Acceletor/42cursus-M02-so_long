@@ -6,7 +6,7 @@
 /*   By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 14:14:44 by ksuebtha          #+#    #+#             */
-/*   Updated: 2025/03/18 18:39:24 by ksuebtha         ###   ########.fr       */
+/*   Updated: 2025/03/18 20:13:42 by ksuebtha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,9 @@ int	game_start(t_map *map)
 			map->height * 39, WD_NAME);
 	vars_nuller(vars);
 	loadgame(vars);
-	mlx_loop_hook(vars->mlx, callbacks, vars);
-	mlx_hook(vars->win, 17, 0, quit, vars);
-	mlx_loop(vars->mlx);
+	// mlx_loop_hook(vars->mlx, callbacks, vars);
+	// mlx_hook(vars->win, 17, 0, quit, vars);
+	// mlx_loop(vars->mlx);
+	free_game(vars);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 15:06:55 by ksuebtha          #+#    #+#             */
-/*   Updated: 2025/03/18 19:22:07 by ksuebtha         ###   ########.fr       */
+/*   Updated: 2025/03/18 19:59:50 by ksuebtha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	init_player(t_vars *vars)
 void	load_p1_idle(t_vars *vars, t_animation *sprite)
 {
 	sprite->img = mlx_xpm_file_to_image(vars->mlx,
-			"./textures1/player/player_idle.xpm",
+			"./textures/player/player_idle.xpm",
 			&sprite->w, &sprite->h);
 	if (!sprite->img)
 	{
@@ -56,19 +56,20 @@ void	load_p1_idle(t_vars *vars, t_animation *sprite)
 	sprite->next = NULL;
 }
 
-// void	load_p1_run(t_vars *vars, t_animation *sprite)
-// {
-// 	sprite->img = mlx_xpm_file_to_image(vars->mlx, "./texture/player/player_idle.xpm",
-// 			&sprite->w, &sprite->h);
-// 	if (!sprite->img)
-// 	{
-// 		free(sprite);
-// 		vars->p1->run = NULL;
-// 		free_game(vars);
-// 	}
-// 	sprite->next = NULL;
-// }
-
+void	load_p1_run(t_vars *vars, t_animation *sprite)
+{
+	sprite->img = mlx_xpm_file_to_image(vars->mlx,
+			"./texture/player/player_idle.xpm",
+			&sprite->w, &sprite->h);
+	if (!sprite->img)
+	{
+		ft_printf("Error: Failed to load player run texture\n");
+		free(vars->p1->run);
+		vars->p1->run = NULL;
+		return ;
+	}
+	sprite->next = NULL;
+}
 
 void	load_p1_img(t_vars *vars)
 {
@@ -78,10 +79,10 @@ void	load_p1_img(t_vars *vars)
 	vars->p1->idle->img = NULL;
 	vars->p1->idle->next = NULL;
 	load_p1_idle(vars, vars->p1->idle);
-	// vars->p1->run = malloc(sizeof(t_animation));
-	// if (!vars->p1->run)
-	// 	free_game(vars);
-	// vars->p1->run->img = NULL;
-	// vars->p1->run->next = NULL;
-	// load_p1_run(vars, vars->p1->run);
+	vars->p1->run = malloc(sizeof(t_animation));
+	if (!vars->p1->run)
+		free_game(vars);
+	vars->p1->run->img = NULL;
+	vars->p1->run->next = NULL;
+	load_p1_run(vars, vars->p1->run);
 }
