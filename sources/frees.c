@@ -6,7 +6,7 @@
 /*   By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 14:08:01 by ksuebtha          #+#    #+#             */
-/*   Updated: 2025/03/18 19:14:22 by ksuebtha         ###   ########.fr       */
+/*   Updated: 2025/03/18 19:20:55 by ksuebtha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ void	free_vars(t_vars *vars)
 		free_player(vars->p1, vars);
 		vars->p1 = NULL;
 	}
-	free(vars);
 }
 
 
@@ -75,6 +74,8 @@ void	free_game(t_vars *vars)
 		free(vars->map->map);
 		vars->map = NULL;
 	}
+	if (vars)
+		free_vars(vars);
 	if (vars->win && vars->mlx)
 		mlx_destroy_window(vars->mlx, vars->win);
 	if (vars->mlx)
@@ -83,8 +84,7 @@ void	free_game(t_vars *vars)
 		free(vars->mlx);
 		vars->mlx = NULL;
 	}
-	if (vars)
-		free_vars(vars);
+	free(vars);
 	exit(1);
 }
 

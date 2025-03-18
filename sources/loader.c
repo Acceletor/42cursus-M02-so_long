@@ -6,7 +6,7 @@
 /*   By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 14:17:22 by ksuebtha          #+#    #+#             */
-/*   Updated: 2025/03/18 19:14:52 by ksuebtha         ###   ########.fr       */
+/*   Updated: 2025/03/18 19:22:03 by ksuebtha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	load_base(t_vars *vars)
 	if (!vars->base)
 		free_game(vars);
 	vars->base->img = mlx_xpm_file_to_image(vars->mlx,
-			"./textures1/empty_space/ground.xpm",
+			"./textures/empty_space/ground.xpm",
 			&vars->base->w, &vars->base->h);
 	if (!vars->base->img)
 	{
