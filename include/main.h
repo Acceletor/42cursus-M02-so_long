@@ -6,7 +6,7 @@
 /*   By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 14:16:16 by ksuebtha          #+#    #+#             */
-/*   Updated: 2025/03/13 19:34:56 by ksuebtha         ###   ########.fr       */
+/*   Updated: 2025/03/18 14:49:36 by ksuebtha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ typedef struct s_vars
 	t_map		*map;
 	t_player	*p1;
 	t_animation	*collect;
-	t_animation	*wall;
+	t_animation	*tree;
 	t_animation	*base;
 	t_animation	*exit;
 	bool		end;
@@ -105,6 +105,26 @@ void	free_map(char **grid);
 void	print_grid(char **grid);
 char	**ft_strdup_2d(t_map *map);
 
+// frees
+void	free_animation(t_animation *anime, t_vars *vars);
+void	free_vars(t_vars *vars);
+void	free_game(t_vars *vars);
 
+//game
+void	main_display(t_vars *vars);
+int		callbacks(t_vars *vars);
+int		quit(t_vars *vars);
+int		game_start(t_map *map);
+
+//game_utils
+void	vars_nuller(t_vars *vars);
+
+//loader
+void	load_base(t_vars *vars);
+int		loadgame(t_vars *vars);
+
+//renders
+void	base_render(t_vars *vars);
+void	tree_render(t_vars *vars);
 
 #endif
