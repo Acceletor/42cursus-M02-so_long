@@ -6,13 +6,22 @@
 /*   By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 18:10:45 by ksuebtha          #+#    #+#             */
-/*   Updated: 2025/03/19 13:02:10 by ksuebtha         ###   ########.fr       */
+/*   Updated: 2025/03/19 13:22:21 by ksuebtha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/main.h"
 
-void	free_map(char **grid)
+void	free_map(t_map *map)
+{
+	if (map->grid)
+		free_grid(map->grid);
+	if (map->map)
+		free(map->map);
+}
+
+
+void	free_grid(char **grid)
 {
 	int	i;
 
@@ -59,7 +68,7 @@ char	**ft_strdup_2d(t_map *map)
 		new_map[i] = ft_strdup(map->grid[i]);
 		if (!new_map[i])
 		{
-			free_map(new_map);
+			free_grid(new_map);
 			return (NULL);
 		}
 		i++;

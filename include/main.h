@@ -6,7 +6,7 @@
 /*   By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 14:16:16 by ksuebtha          #+#    #+#             */
-/*   Updated: 2025/03/18 16:35:45 by ksuebtha         ###   ########.fr       */
+/*   Updated: 2025/03/19 13:20:37 by ksuebtha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,8 @@ void	count_components(char **map, t_component *comp);
 void	map_init(t_map *map);
 
 // map utils
-void	free_map(char **grid);
+void	free_grid(char **grid);
+void	free_map(t_map *map);
 void	print_grid(char **grid);
 char	**ft_strdup_2d(t_map *map);
 

@@ -6,7 +6,7 @@
 /*   By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 13:18:27 by ksuebtha          #+#    #+#             */
-/*   Updated: 2025/03/19 13:07:26 by ksuebtha         ###   ########.fr       */
+/*   Updated: 2025/03/19 13:27:31 by ksuebtha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,11 @@ int	main(int argc, char **argv)
 	if (is_map_error(argv[1], &map))
 	{
 		ft_printf("Error: not valid\n");
-		free_map(map.grid);
-		free(map.map);
+		free_map(&map);
 		exit(1);
 	}
 	game_start(&map);
-	free_map(map.grid);
-	free(map.map);
+	// free_grid(map.grid);
+	// free(map.map);
 	return (0);
 }

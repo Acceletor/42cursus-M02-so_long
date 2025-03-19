@@ -6,7 +6,7 @@
 /*   By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 14:08:01 by ksuebtha          #+#    #+#             */
-/*   Updated: 2025/03/19 12:21:45 by ksuebtha         ###   ########.fr       */
+/*   Updated: 2025/03/19 13:23:52 by ksuebtha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	free_game(t_vars *vars)
 	if (vars->map)
 	{
 		if (vars->map->grid)
-			free_map(vars->map->grid);
+			free_grid(vars->map->grid);
 		free(vars->map->map);
 		vars->map = NULL;
 	}

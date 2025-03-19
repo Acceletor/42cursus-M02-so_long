@@ -6,7 +6,7 @@
 /*   By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 14:14:44 by ksuebtha          #+#    #+#             */
-/*   Updated: 2025/03/19 13:09:16 by ksuebtha         ###   ########.fr       */
+/*   Updated: 2025/03/19 13:22:55 by ksuebtha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,7 @@ int	game_start(t_map *map)
 	vars->end = false;
 	vars->map = map;
 	if (map)
-	{
-		free_map(map->grid);
-		free(map->map);
-	}
+		free_map(map);
 	vars->mlx = mlx_init();
 	if (!vars->mlx)
 	{

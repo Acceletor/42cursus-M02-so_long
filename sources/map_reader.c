@@ -6,7 +6,7 @@
 /*   By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 18:10:37 by ksuebtha          #+#    #+#             */
-/*   Updated: 2025/03/19 13:06:44 by ksuebtha         ###   ########.fr       */
+/*   Updated: 2025/03/19 13:16:59 by ksuebtha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ char	**create_map_grid(t_map *map)
 			j++;
 		if (j != map->width)
 		{
-			free_map(grid);
+			free_grid(grid);
 			return (NULL);
 		}
 		i++;
