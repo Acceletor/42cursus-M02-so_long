@@ -6,7 +6,7 @@
 /*   By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 14:17:22 by ksuebtha          #+#    #+#             */
-/*   Updated: 2025/03/18 20:03:22 by ksuebtha         ###   ########.fr       */
+/*   Updated: 2025/03/19 13:45:35 by ksuebtha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,10 @@ int	loadgame(t_vars *vars)
 		load_base(vars);
 	if (!vars->tree)
 		load_tree(vars);
-	// if (!vars->p1)
-	// 	init_player(vars);
-	// if (!vars->p1->idle && !vars->p1->run)
-	// 	load_p1_img(vars);
+	if (!vars->p1)
+		init_player(vars);
+	if (!vars->p1->idle && !vars->p1->run)
+		load_p1_img(vars);
 
 	return (0);
 }

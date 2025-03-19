@@ -6,7 +6,7 @@
 /*   By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 15:06:55 by ksuebtha          #+#    #+#             */
-/*   Updated: 2025/03/18 19:59:50 by ksuebtha         ###   ########.fr       */
+/*   Updated: 2025/03/19 13:46:09 by ksuebtha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	load_p1_idle(t_vars *vars, t_animation *sprite)
 void	load_p1_run(t_vars *vars, t_animation *sprite)
 {
 	sprite->img = mlx_xpm_file_to_image(vars->mlx,
-			"./texture/player/player_idle.xpm",
+			"./textures/player/player_idle.xpm",
 			&sprite->w, &sprite->h);
 	if (!sprite->img)
 	{
