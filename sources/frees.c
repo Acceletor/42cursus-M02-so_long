@@ -6,7 +6,7 @@
 /*   By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 14:08:01 by ksuebtha          #+#    #+#             */
-/*   Updated: 2025/03/18 19:20:55 by ksuebtha         ###   ########.fr       */
+/*   Updated: 2025/03/19 12:21:45 by ksuebtha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	free_vars(t_vars *vars)
 
 void	free_game(t_vars *vars)
 {
-	ft_printf("NOT ENOUGH MEMORY TO MALLOC || Fail to load texture\n");
+	ft_printf("Closing game and freeing resources...\n");
 	if (!vars)
 		exit(1);
 	if (vars->map)
@@ -77,7 +77,9 @@ void	free_game(t_vars *vars)
 	if (vars)
 		free_vars(vars);
 	if (vars->win && vars->mlx)
+	{
 		mlx_destroy_window(vars->mlx, vars->win);
+	}
 	if (vars->mlx)
 	{
 		mlx_destroy_display(vars->mlx);
@@ -85,6 +87,6 @@ void	free_game(t_vars *vars)
 		vars->mlx = NULL;
 	}
 	free(vars);
-	exit(1);
+	exit (0);
 }
 

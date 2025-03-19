@@ -6,7 +6,7 @@
 /*   By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 18:10:37 by ksuebtha          #+#    #+#             */
-/*   Updated: 2025/03/13 14:09:18 by ksuebtha         ###   ########.fr       */
+/*   Updated: 2025/03/19 13:06:44 by ksuebtha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ void	what_map_size(int fd, t_map *map)
 	while (line != NULL)
 	{
 		temp = ft_strjoin(map->map, line);
+		free(line);
 		free(map->map);
 		map->map = temp;
 		height++;
-		free(line);
 		line = get_next_line(fd);
 	}
 	close(fd);
@@ -50,6 +50,8 @@ char	**create_map_grid(t_map *map)
 	if (!map->map)
 		return (NULL);
 	grid = ft_split(map->map, '\n');
+	if (!grid)
+		return (NULL);
 	i = 0;
 	while (grid[i])
 	{

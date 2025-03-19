@@ -6,7 +6,7 @@
 /*   By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 14:14:44 by ksuebtha          #+#    #+#             */
-/*   Updated: 2025/03/18 20:13:42 by ksuebtha         ###   ########.fr       */
+/*   Updated: 2025/03/19 13:09:16 by ksuebtha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,19 @@ int	callbacks(t_vars *vars)
 
 int	quit(t_vars *vars)
 {
-	mlx_destroy_window(vars->mlx, vars->win);
+	if (!vars)
+		return (1);
 	free_vars(vars);
-	exit(1);
+	if (vars->win && vars->mlx)
+		mlx_destroy_window(vars->mlx, vars->win);
+	if (vars->mlx)
+	{
+		mlx_destroy_display(vars->mlx);
+		free(vars->mlx);
+		vars->mlx = NULL;
+	}
+	free(vars);
+	exit(0);
 }
 
 int	game_start(t_map *map)
@@ -47,16 +57,24 @@ int	game_start(t_map *map)
 	}
 	vars->end = false;
 	vars->map = map;
+	if (map)
+	{
+		free_map(map->grid);
+		free(map->map);
+	}
 	vars->mlx = mlx_init();
 	if (!vars->mlx)
-		free_game(vars);
+	{
+		free(vars);
+		exit (1);
+	}
 	vars->win = mlx_new_window(vars->mlx, map->width * 40,
 			map->height * 39, WD_NAME);
 	vars_nuller(vars);
 	loadgame(vars);
 	// mlx_loop_hook(vars->mlx, callbacks, vars);
-	// mlx_hook(vars->win, 17, 0, quit, vars);
-	// mlx_loop(vars->mlx);
+	mlx_hook(vars->win, 17, 0, quit, vars);
+	mlx_loop(vars->mlx);
 	free_game(vars);
-	return (0);
+	exit (0);
 }
