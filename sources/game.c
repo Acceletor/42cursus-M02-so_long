@@ -6,7 +6,7 @@
 /*   By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 14:14:44 by ksuebtha          #+#    #+#             */
-/*   Updated: 2025/03/19 13:22:55 by ksuebtha         ###   ########.fr       */
+/*   Updated: 2025/03/19 13:41:25 by ksuebtha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,7 @@ int	callbacks(t_vars *vars)
 
 int	quit(t_vars *vars)
 {
-	if (!vars)
-		return (1);
-	free_vars(vars);
-	if (vars->win && vars->mlx)
-		mlx_destroy_window(vars->mlx, vars->win);
-	if (vars->mlx)
-	{
-		mlx_destroy_display(vars->mlx);
-		free(vars->mlx);
-		vars->mlx = NULL;
-	}
-	free(vars);
+	free_game(vars);
 	exit(0);
 }
 
@@ -57,8 +46,6 @@ int	game_start(t_map *map)
 	}
 	vars->end = false;
 	vars->map = map;
-	if (map)
-		free_map(map);
 	vars->mlx = mlx_init();
 	if (!vars->mlx)
 	{
@@ -69,7 +56,7 @@ int	game_start(t_map *map)
 			map->height * 39, WD_NAME);
 	vars_nuller(vars);
 	loadgame(vars);
-	// mlx_loop_hook(vars->mlx, callbacks, vars);
+	mlx_loop_hook(vars->mlx, callbacks, vars);
 	mlx_hook(vars->win, 17, 0, quit, vars);
 	mlx_loop(vars->mlx);
 	free_game(vars);
