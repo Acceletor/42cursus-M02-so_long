@@ -16,7 +16,7 @@ RM = rm -f
 
 # essential name files
 SRCBASE = main map_components map_reader map_utils map_validator \
-		frees game game_utils loader renders player
+		frees game game_utils loader renders player update_position
 SRC = $(addsuffix .c, $(addprefix sources/, $(SRCBASE))) \
 		get_next_line/get_next_line.c  \
 		get_next_line/get_next_line_utils.c 

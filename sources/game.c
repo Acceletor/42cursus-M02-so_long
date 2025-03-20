@@ -6,24 +6,36 @@
 /*   By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 14:14:44 by ksuebtha          #+#    #+#             */
-/*   Updated: 2025/03/19 13:50:23 by ksuebtha         ###   ########.fr       */
+/*   Updated: 2025/03/20 14:17:24 by ksuebtha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/main.h"
 
-
 void	main_display(t_vars *vars)
 {
 	base_render(vars);
 	tree_render(vars);
+	player_render(vars);
+	collectable_render(vars);
+	exit_render(vars);
 }
+
+// int	keypress(int keycode, t_vars *vars)
+// {
+// 	if (keycode == ESC)
+// 		quit(vars);
+// 	if (keycode == KEY_W || keycode == KEY_A
+// 		|| keycode == KEY_D || keycode == KEY_S)
+// 		update_pos(vars, keycode);
+// 	return (0);
+// }
 
 int	callbacks(t_vars *vars)
 {
+	// game_check()
 	mlx_clear_window(vars->mlx, vars->win);
 	main_display(vars);
-	if(p1)
 	if (vars->end == true)
 		quit(vars);
 	return (0);
@@ -57,8 +69,8 @@ int	game_start(t_map *map)
 	vars_nuller(vars);
 	loadgame(vars);
 	mlx_loop_hook(vars->mlx, callbacks, vars);
+	// mlx_hook(vars->win, 2, 1L << 0, keypress, vars);
 	mlx_hook(vars->win, 17, 0, quit, vars);
 	mlx_loop(vars->mlx);
-	// free_game(vars); do really need this cuz with quit in callback
 	exit (0);
 }

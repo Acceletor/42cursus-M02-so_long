@@ -6,7 +6,7 @@
 /*   By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 14:16:16 by ksuebtha          #+#    #+#             */
-/*   Updated: 2025/03/19 13:50:47 by ksuebtha         ###   ########.fr       */
+/*   Updated: 2025/03/20 14:17:47 by ksuebtha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,5 +135,11 @@ void	load_p1_img(t_vars *vars);
 //renders
 void	base_render(t_vars *vars);
 void	tree_render(t_vars *vars);
+void	player_render(t_vars *vars);
+void	collectable_render(t_vars *vars);
+void	exit_render(t_vars *vars);
+
+//update position
+void	update_p_pos(t_vars *vars, int keycode);
 
 #endif

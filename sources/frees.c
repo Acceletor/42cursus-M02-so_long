@@ -6,7 +6,7 @@
 /*   By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 14:08:01 by ksuebtha          #+#    #+#             */
-/*   Updated: 2025/03/19 13:38:54 by ksuebtha         ###   ########.fr       */
+/*   Updated: 2025/03/20 14:15:10 by ksuebtha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,20 +45,15 @@ void	free_vars(t_vars *vars)
 	if (!vars)
 		return ;
 	if (vars->base)
-	{
 		free_animation(vars->base, vars);
-		vars->base = NULL;
-	}
 	if (vars->tree)
-	{
 		free_animation(vars->tree, vars);
-		vars->tree = NULL;
-	}
 	if (vars->p1)
-	{
 		free_player(vars->p1, vars);
-		vars->p1 = NULL;
-	}
+	if (vars->collect)
+		free_animation(vars->collect, vars);
+	if (vars->exit)
+		free_animation(vars->exit, vars);
 }
 
 
