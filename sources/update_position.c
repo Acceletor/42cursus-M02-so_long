@@ -6,7 +6,7 @@
 /*   By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 13:48:54 by ksuebtha          #+#    #+#             */
-/*   Updated: 2025/03/20 15:18:59 by ksuebtha         ###   ########.fr       */
+/*   Updated: 2025/03/20 17:41:08 by ksuebtha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	move_player(t_vars *vars, int keycode, int i, int j)
 		vars->map->grid[new_i][new_j] = 'P';
 		vars->p1->move = 1;
 		vars->p1->move_count++;
+		ft_printf("Current Move: %d\n", vars->p1->move_count);
 	}
 }
 
