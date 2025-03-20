@@ -6,7 +6,7 @@
 /*   By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 14:14:44 by ksuebtha          #+#    #+#             */
-/*   Updated: 2025/03/20 14:17:24 by ksuebtha         ###   ########.fr       */
+/*   Updated: 2025/03/20 14:46:34 by ksuebtha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,20 @@ void	main_display(t_vars *vars)
 	exit_render(vars);
 }
 
-// int	keypress(int keycode, t_vars *vars)
-// {
-// 	if (keycode == ESC)
-// 		quit(vars);
-// 	if (keycode == KEY_W || keycode == KEY_A
-// 		|| keycode == KEY_D || keycode == KEY_S)
-// 		update_pos(vars, keycode);
-// 	return (0);
-// }
+int	keypress(int keycode, t_vars *vars)
+{
+	if (keycode == ESC)
+		quit(vars);
+	if (keycode == KEY_W || keycode == KEY_A
+		|| keycode == KEY_D || keycode == KEY_S)
+	{
+		update_pos(vars, keycode);
+		mlx_clear_window(vars->mlx, vars->win);
+		main_display(vars);
+	}
+
+	return (0);
+}
 
 int	callbacks(t_vars *vars)
 {
@@ -69,7 +74,7 @@ int	game_start(t_map *map)
 	vars_nuller(vars);
 	loadgame(vars);
 	mlx_loop_hook(vars->mlx, callbacks, vars);
-	// mlx_hook(vars->win, 2, 1L << 0, keypress, vars);
+	mlx_hook(vars->win, 2, 1L << 0, keypress, vars);
 	mlx_hook(vars->win, 17, 0, quit, vars);
 	mlx_loop(vars->mlx);
 	exit (0);

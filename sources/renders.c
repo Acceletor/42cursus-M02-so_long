@@ -6,7 +6,7 @@
 /*   By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 14:22:59 by ksuebtha          #+#    #+#             */
-/*   Updated: 2025/03/20 14:16:55 by ksuebtha         ###   ########.fr       */
+/*   Updated: 2025/03/20 14:57:10 by ksuebtha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,31 @@ void	tree_render(t_vars *vars)
 
 void	player_render(t_vars *vars)
 {
+	int		i;
+	int		j;
+	char	**grid;
+
 	if (vars->p1->move == false)
 		vars->p1->active = vars->p1->idle;
 	else
 		vars->p1->active = vars->p1->run;
-	mlx_put_image_to_window(vars->mlx, vars->win,
-		vars->p1->active->img, vars->p1->active->w, vars->p1->active->h);
+	grid = vars->map->grid;
+	i = 0;
+	while (grid[i])
+	{
+		j = 0;
+		while (grid[i][j])
+		{
+			if (grid[i][j] == 'P')
+			{
+				mlx_put_image_to_window(vars->mlx, vars->win,
+					vars->p1->active->img, j * vars->p1->active->w,
+					i * vars->p1->active->h);
+			}
+			j++;
+		}
+		i++;
+	}
 }
 
 void	collectable_render(t_vars *vars)
