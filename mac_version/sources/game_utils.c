@@ -45,3 +45,27 @@ void remove_player_map(t_vars *vars)
 		i++;
 	}
 }
+
+int count_collect(t_vars *vars)
+{
+	char	**grid;
+	int		i;
+	int		j;
+	int		c;
+
+	c = 0;
+	grid = vars->map->grid;
+	i = 0;
+	while (grid[i])
+	{
+		j = 0;
+		while (grid[i][j])
+		{
+			if (grid[i][j] == 'C')
+				c++;
+			j++;
+		}
+		i++;
+	}
+	return (c);
+}

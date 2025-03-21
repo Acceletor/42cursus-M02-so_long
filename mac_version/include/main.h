@@ -122,6 +122,8 @@ int		game_start(t_map *map);
 //game_utils
 void	vars_nuller(t_vars *vars);
 void	remove_player_map(t_vars *vars);
+int 	count_collect(t_vars *vars);
+
 //loader
 void	load_base(t_vars *vars);
 void	load_tree(t_vars *vars);
