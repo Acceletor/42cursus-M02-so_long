@@ -39,7 +39,11 @@ int	callbacks(t_vars *vars)
 	mlx_clear_window(vars->mlx, vars->win);
 	main_display(vars);
 	if (count_collect(vars) == 0 && vars->end == false)
+	{
 		vars->end = true;	
+		ft_printf("\033[36m[You can exit now]\033[0m\n");
+	}
+		
 	if (vars->p1->move == false)
 		vars->p1->active = vars->p1->idle;
 	else

@@ -40,14 +40,14 @@ void	update_pos(t_vars *vars, int keycode, t_player *p1)
 		if (vars->map->grid[new_i][new_j] == 'C')
 		{
 			vars->map->grid[new_i][new_j] = '0';
-			ft_printf("You collected the coin\n");
+			ft_printf("\033[33m[You have collected coin]\033[0m\n");
 		}
 		vars->p1->move = 1;
 		vars->p1->move_count++;
 		ft_printf("Current Move: %d\n", vars->p1->move_count);
 		if (vars->map->grid[new_i][new_j] == 'E' && vars->end == true)
 		{
-			ft_printf("You Won!!\n");
+			ft_printf("\033[35m[You Won!!]\033[0m\n");
 			vars->endgame = true;
 			vars->should_quit_next_frame = true;
 		}
