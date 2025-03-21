@@ -20,6 +20,8 @@ void	vars_nuller(t_vars *vars)
 	vars->p1 = NULL;
 	vars->exit = NULL;
 	vars->end = false;
+	vars->endgame = false;
+	vars->should_quit_next_frame = false;
 }
 
 void remove_player_map(t_vars *vars)

@@ -31,7 +31,6 @@ int	keypress(int keycode, t_vars *vars)
 		// mlx_clear_window(vars->mlx, vars->win);
 		// main_display(vars);
 	}
-
 	return (0);
 }
 
@@ -39,14 +38,23 @@ int	callbacks(t_vars *vars)
 {
 	mlx_clear_window(vars->mlx, vars->win);
 	main_display(vars);
-	if (count_collect(vars) == 0)
-		vars->end = true;
+	if (count_collect(vars) == 0 && vars->end == false)
+		vars->end = true;	
 	if (vars->p1->move == false)
 		vars->p1->active = vars->p1->idle;
 	else
 		vars->p1->active = vars->p1->run;
 	mlx_put_image_to_window(vars->mlx, vars->win,vars->p1->active->img, vars->p1->x, vars->p1->y);
-
+	if (vars->should_quit_next_frame == true)
+	{
+		vars->should_quit_next_frame = false;
+		return (0);
+	}
+	if (vars->endgame == true)
+	{
+		ft_printf("Game exiting...\n");
+		quit(vars);
+	}
 	return (0);
 }
 

@@ -20,6 +20,7 @@
 # include <stdlib.h> //exit()
 # include <fcntl.h> //open()
 # include <stdbool.h>
+# include <unistd.h> //usleep()
 
 // # define SPEED_X	39
 // # define SPEED_Y	40
@@ -84,6 +85,8 @@ typedef struct s_vars
 	t_animation	*base;
 	t_animation	*exit;
 	bool		end;
+	bool		endgame;
+	bool		should_quit_next_frame;
 }	t_vars;
 
 // map reader
@@ -115,6 +118,7 @@ void	free_game(t_vars *vars);
 
 //game
 void	main_display(t_vars *vars);
+int		keypress(int keycode, t_vars *vars);
 int		callbacks(t_vars *vars);
 int		quit(t_vars *vars);
 int		game_start(t_map *map);
@@ -143,6 +147,6 @@ void	collectable_render(t_vars *vars);
 void	exit_render(t_vars *vars);
 
 //update position
-void update_pos(t_vars *vars, int keycode, t_player *p1);
+void	update_pos(t_vars *vars, int keycode, t_player *p1);
 
 #endif
