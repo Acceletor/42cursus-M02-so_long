@@ -21,12 +21,13 @@
 # include <fcntl.h> //open()
 # include <stdbool.h>
 
-# define SPEED	15
-# define KEY_W	13
-# define KEY_A	0
-# define KEY_S	1
-# define KEY_D	2
-# define ESC 53
+// # define SPEED_X	39
+// # define SPEED_Y	40
+# define KEY_W		13
+# define KEY_A		0
+# define KEY_S		1
+# define KEY_D		2
+# define ESC 		53
 # define WD_NAME "so_long"
 
 
@@ -120,7 +121,7 @@ int		game_start(t_map *map);
 
 //game_utils
 void	vars_nuller(t_vars *vars);
-
+void	remove_player_map(t_vars *vars);
 //loader
 void	load_base(t_vars *vars);
 void	load_tree(t_vars *vars);
@@ -140,6 +141,6 @@ void	collectable_render(t_vars *vars);
 void	exit_render(t_vars *vars);
 
 //update position
-void	update_pos(t_vars *vars, int keycode);
+void update_pos(t_vars *vars, int keycode, t_player *p1);
 
 #endif

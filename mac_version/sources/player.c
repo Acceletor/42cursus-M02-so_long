@@ -44,7 +44,7 @@ void	init_player(t_vars *vars)
 void	load_p1_idle(t_vars *vars, t_animation *sprite)
 {
 	sprite->img = mlx_xpm_file_to_image(vars->mlx,
-			"./textures/player/player_idle.xpm",
+			"./textures/player/goblin_idle_1.xpm",
 			&sprite->w, &sprite->h);
 	if (!sprite->img)
 	{
@@ -59,7 +59,7 @@ void	load_p1_idle(t_vars *vars, t_animation *sprite)
 void	load_p1_run(t_vars *vars, t_animation *sprite)
 {
 	sprite->img = mlx_xpm_file_to_image(vars->mlx,
-			"./textures/player/player_idle.xpm",
+			"./textures/player/goblin_idle_1.xpm",
 			&sprite->w, &sprite->h);
 	if (!sprite->img)
 	{

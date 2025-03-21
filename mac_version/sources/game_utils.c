@@ -21,3 +21,27 @@ void	vars_nuller(t_vars *vars)
 	vars->exit = NULL;
 	vars->end = false;
 }
+
+void remove_player_map(t_vars *vars)
+{
+	char	**grid;
+	int		i;
+	int		j;
+
+	grid = vars->map->grid;
+	i = 0;
+	while (grid[i])
+	{
+		j = 0;
+		while (grid[i][j])
+		{
+			if (grid[i][j] == 'P')
+			{
+                grid[i][j] = '0';
+                return;
+			}
+			j++;
+		}
+		i++;
+	}
+}
