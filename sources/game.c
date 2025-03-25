@@ -6,7 +6,7 @@
 /*   By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 14:14:44 by ksuebtha          #+#    #+#             */
-/*   Updated: 2025/03/25 13:42:09 by ksuebtha         ###   ########.fr       */
+/*   Updated: 2025/03/25 14:03:17 by ksuebtha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,7 @@ int	keypress(int keycode, t_vars *vars)
 		quit(vars);
 	if (keycode == KEY_W || keycode == KEY_A
 		|| keycode == KEY_D || keycode == KEY_S)
-	{
 		update_pos(vars, keycode, vars->p1);
-		// mlx_clear_window(vars->mlx, vars->win);
-		// main_display(vars);
-	}
-
 	return (0);
 }
 

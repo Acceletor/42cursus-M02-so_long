@@ -6,7 +6,7 @@
 /*   By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 15:06:55 by ksuebtha          #+#    #+#             */
-/*   Updated: 2025/03/25 13:40:15 by ksuebtha         ###   ########.fr       */
+/*   Updated: 2025/03/25 14:04:06 by ksuebtha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,4 +88,3 @@ void	load_p1_img(t_vars *vars)
 	vars->p1->at_exit->next = NULL;
 	load_p1_at_exit(vars, vars->p1->at_exit);
 }
-

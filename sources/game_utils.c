@@ -6,7 +6,7 @@
 /*   By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 14:16:32 by ksuebtha          #+#    #+#             */
-/*   Updated: 2025/03/25 13:41:36 by ksuebtha         ###   ########.fr       */
+/*   Updated: 2025/03/25 14:01:19 by ksuebtha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	vars_nuller(t_vars *vars)
 	vars->endgame = false;
 	vars->should_quit_next_frame = false;
 }
-
 
 void	remove_player_map(t_vars *vars)
 {

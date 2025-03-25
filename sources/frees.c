@@ -6,7 +6,7 @@
 /*   By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 14:08:01 by ksuebtha          #+#    #+#             */
-/*   Updated: 2025/03/25 13:41:02 by ksuebtha         ###   ########.fr       */
+/*   Updated: 2025/03/25 14:01:42 by ksuebtha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ void	free_vars(t_vars *vars)
 		free_animation(vars->exit, vars);
 }
 
-
 void	free_game(t_vars *vars)
 {
 	ft_printf("Closing game and freeing resources...\n");
@@ -79,4 +78,3 @@ void	free_game(t_vars *vars)
 	free(vars);
 	exit (0);
 }
-

@@ -6,7 +6,7 @@
 /*   By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 18:10:40 by ksuebtha          #+#    #+#             */
-/*   Updated: 2025/03/25 13:51:13 by ksuebtha         ###   ########.fr       */
+/*   Updated: 2025/03/25 14:02:36 by ksuebtha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,7 @@ bool	component_error(char **map, t_component	*comp)
 	comp->player.x = 0;
 	comp->player.y = 0;
 	comp->is_valid = true;
-
 	count_components(map, comp);
-
 	if (comp->e != 1 || comp->p != 1 || comp->c < 1
 		|| !comp->is_valid)
 		return (true);
@@ -61,7 +59,6 @@ void	flood_fill(char **map, int x, int y, t_component *comp)
 	if (map[y][x] == 'E')
 		comp->e--;
 	map[y][x] = 'F';
-
 	flood_fill(map, x + 1, y, comp);
 	flood_fill(map, x - 1, y, comp);
 	flood_fill(map, x, y + 1, comp);
@@ -104,4 +101,3 @@ bool	is_map_error(char *argv, t_map *map)
 		return (true);
 	return (false);
 }
-

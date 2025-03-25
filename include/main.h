@@ -6,7 +6,7 @@
 /*   By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 14:16:16 by ksuebtha          #+#    #+#             */
-/*   Updated: 2025/03/25 13:40:49 by ksuebtha         ###   ########.fr       */
+/*   Updated: 2025/03/25 14:05:08 by ksuebtha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@
 # define KEY_D	100
 # define ESC    65307
 # define WD_NAME "so_long"
-
 
 typedef struct s_animation
 {
@@ -60,7 +59,6 @@ typedef struct s_component
 	bool		is_valid;
 
 }		t_component;
-
 
 typedef struct s_map
 {

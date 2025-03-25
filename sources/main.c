@@ -6,7 +6,7 @@
 /*   By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 13:18:27 by ksuebtha          #+#    #+#             */
-/*   Updated: 2025/03/19 13:27:31 by ksuebtha         ###   ########.fr       */
+/*   Updated: 2025/03/25 14:03:48 by ksuebtha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	main(int argc, char **argv)
 		exit(1);
 	}
 	game_start(&map);
-	// free_grid(map.grid);
-	// free(map.map);
+	free_grid(map.grid);
+	free(map.map);
 	return (0);
 }
