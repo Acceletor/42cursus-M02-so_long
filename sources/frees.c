@@ -6,7 +6,7 @@
 /*   By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 14:08:01 by ksuebtha          #+#    #+#             */
-/*   Updated: 2025/03/20 14:15:10 by ksuebtha         ###   ########.fr       */
+/*   Updated: 2025/03/25 13:41:02 by ksuebtha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ void	free_player(t_player *player, t_vars *vars)
 		return ;
 	if (player->idle)
 		free_animation(player->idle, vars);
-	if (player->run)
-		free_animation(player->run, vars);
+	if (player->at_exit)
+		free_animation(player->at_exit, vars);
 	free(player);
 }
 

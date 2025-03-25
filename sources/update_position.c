@@ -6,19 +6,47 @@
 /*   By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 13:48:54 by ksuebtha          #+#    #+#             */
-/*   Updated: 2025/03/20 17:41:08 by ksuebtha         ###   ########.fr       */
+/*   Updated: 2025/03/25 13:51:21 by ksuebtha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/main.h"
 
-void	move_player(t_vars *vars, int keycode, int i, int j)
+static void	move_player(t_vars *vars, t_player *p1, int new_i, int new_j)
+{
+	p1->x = new_j * vars->base->w;
+	p1->y = new_i * vars->base->h;
+	if (vars->map->grid[new_i][new_j] == 'C')
+	{
+		vars->map->grid[new_i][new_j] = '0';
+		ft_printf("\033[33m[You have collected coin]\033[0m\n");
+	}
+	vars->p1->move_count++;
+	ft_printf("Current Move: %d\n", vars->p1->move_count);
+	if (vars->map->grid[new_i][new_j] == 'E' && vars->end == true)
+	{
+		vars->p1->e = true;
+		ft_printf("\033[35m[You Won!!]\033[0m\n");
+		vars->endgame = true;
+		vars->should_quit_next_frame = true;
+	}
+	else if (vars->map->grid[new_i][new_j] == 'E' && vars->end == false)
+		vars->p1->e = true;
+	else
+		vars->p1->e = false;
+}
+
+void	update_pos(t_vars *vars, int keycode, t_player *p1)
 {
 	int	new_j;
 	int	new_i;
+	int	i;
+	int	j;
 
-	new_i = i;
-	new_j = j;
+	i = p1->y / vars->base->h;
+	j = p1->x / vars->base->w;
+	new_i = p1->y / vars->base->h;
+	new_j = p1->x / vars->base->w;
 	if (keycode == KEY_W && i - 1 >= 0 && vars->map->grid[i - 1][j] != '1')
 		new_i--;
 	else if (keycode == KEY_S && vars->map->grid[i + 1][j]
@@ -30,35 +58,5 @@ void	move_player(t_vars *vars, int keycode, int i, int j)
 		&& vars->map->grid[i][j + 1] != '1')
 		new_j++;
 	if (new_i != i || new_j != j)
-	{
-		vars->map->grid[i][j] = '0';
-		vars->map->grid[new_i][new_j] = 'P';
-		vars->p1->move = 1;
-		vars->p1->move_count++;
-		ft_printf("Current Move: %d\n", vars->p1->move_count);
-	}
-}
-
-void	update_pos(t_vars *vars, int keycode)
-{
-	char	**grid;
-	int		i;
-	int		j;
-
-	grid = vars->map->grid;
-	i = 0;
-	while (grid[i])
-	{
-		j = 0;
-		while (grid[i][j])
-		{
-			if (grid[i][j] == 'P')
-			{
-                move_player(vars, keycode, i, j);
-                return;
-			}
-			j++;
-		}
-		i++;
-	}
+		move_player(vars, p1, new_i, new_j);
 }

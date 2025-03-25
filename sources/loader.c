@@ -6,7 +6,7 @@
 /*   By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 14:17:22 by ksuebtha          #+#    #+#             */
-/*   Updated: 2025/03/20 14:13:15 by ksuebtha         ###   ########.fr       */
+/*   Updated: 2025/03/25 13:50:21 by ksuebtha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ int	loadgame(t_vars *vars)
 		load_tree(vars);
 	if (!vars->p1)
 		init_player(vars);
-	if (!vars->p1->idle && !vars->p1->run)
+	if (!vars->p1->idle && !vars->p1->at_exit)
 		load_p1_img(vars);
 	if (!vars->collect)
 		load_collect(vars);

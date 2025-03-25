@@ -6,7 +6,7 @@
 /*   By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 14:16:16 by ksuebtha          #+#    #+#             */
-/*   Updated: 2025/03/20 14:38:06 by ksuebtha         ###   ########.fr       */
+/*   Updated: 2025/03/25 13:40:49 by ksuebtha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 # include <fcntl.h> //open()
 # include <stdbool.h>
 
-# define SPEED	15
 # define KEY_W	119
 # define KEY_A	97
 # define KEY_S	115
@@ -41,13 +40,13 @@ typedef struct s_animation
 typedef struct s_player
 {
 	t_animation	*idle;
-	t_animation	*run;
+	t_animation	*at_exit;
 	t_animation	*active;
 	int			run_frames;
 	int			idle_frames;
 	int			x;
 	int			y;
-	int			move;
+	bool		e;
 	int			move_count;
 }	t_player;
 
@@ -83,6 +82,8 @@ typedef struct s_vars
 	t_animation	*base;
 	t_animation	*exit;
 	bool		end;
+	bool		endgame;
+	bool		should_quit_next_frame;
 }	t_vars;
 
 // map reader
@@ -120,6 +121,8 @@ int		game_start(t_map *map);
 
 //game_utils
 void	vars_nuller(t_vars *vars);
+void	remove_player_map(t_vars *vars);
+int		count_collect(t_vars *vars);
 
 //loader
 void	load_base(t_vars *vars);
@@ -129,7 +132,7 @@ int		loadgame(t_vars *vars);
 //player
 void	init_player(t_vars *vars);
 void	load_p1_idle(t_vars *vars, t_animation *sprite);
-void	load_p1_run(t_vars *vars, t_animation *sprite);
+void	load_p1_at_exit(t_vars *vars, t_animation *sprite);
 void	load_p1_img(t_vars *vars);
 
 //renders
@@ -140,6 +143,6 @@ void	collectable_render(t_vars *vars);
 void	exit_render(t_vars *vars);
 
 //update position
-void	update_pos(t_vars *vars, int keycode);
+void	update_pos(t_vars *vars, int keycode, t_player *p1);
 
 #endif
