@@ -1,13 +1,22 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/03/25 15:23:19 by ksuebtha          #+#    #+#              #
+#    Updated: 2025/03/25 15:23:20 by ksuebtha         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = so_long
-NAME_BONUS = so_long_bonus
 
 # Directories
 LIBFT = ./libft/libft.a
 PRINTF = ./printf/libftprintf.a
 INC = -I ./include/
-INC_BONUS = -I ./include_bonus/
 OBJ_DIR = obj/
-OBJ_BONUS_DIR = objbonus/
 
 # Complier and Cflag
 CC = gcc
@@ -22,11 +31,9 @@ SRC = $(addsuffix .c, $(addprefix sources/, $(SRCBASE))) \
 		get_next_line/get_next_line_utils.c 
 
 SRCADD = $(SRCBASE) #add additional file
-SRCBONUS = $(addsuffix _bonus.c, $(addprefix sources_bonus/, $(SRCADD)))
 
 # Converts SRCS file paths from .c to .o and places them inside OBJ_DIR/
 OBJ = $(SRC:sources/%.c=$(OBJ_DIR)%.o)
-OBJ_BONUS = $(SRCBONUS:sources_bonus/%.c=$(OBJ_BONUS_DIR)%.o)
 
 #MiniLibX
 MLX_PATH = ./minilibx-linux 
@@ -40,9 +47,6 @@ start:
 # Ensure directories exist
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
-
-$(OBJ_BONUS_DIR):
-	@mkdir -p $(OBJ_BONUS_DIR)
 
 # Build Libraries
 $(LIBFT):
@@ -60,26 +64,16 @@ $(NAME): $(LIBFT) $(OBJ_DIR) $(OBJ) $(PRINTF)
 $(OBJ_DIR)%.o: sources/%.c | $(OBJ_DIR)
 	@$(CC) $(CFLAGS) -c $< -o $@
 
-# Bonus Compilation
-bonus: $(NAME_BONUS)
-
-$(NAME_BONUS) : $(LIBFT) $(OBJ_BONUS_DIR) $(OBJ_BONUS) $(PRINTF)
-	@$(CC) $(CFLAGS) $(INC_BONUS) $(OBJ_BONUS) $(LIBFT) $(PRINTF) $(MLX_FLAG) -o $(NAME_BONUS)
-
-$(OBJ_BONUS_DIR)%.o: sources_bonus/%.c | $(OBJ_BONUS_DIR)
-	@$(CC) $(CFLAGS) -c $< -o $@
-
 # Cleaning Rules
 clean: 
-	@$(RM) -r $(OBJ_DIR) $(OBJ_BONUS_DIR)
+	@$(RM) -r $(OBJ_DIR)
 	@make clean -C ./libft
 
 fclean: clean
-	@$(RM) $(NAME) $(NAME_BONUS)
+	@$(RM) $(NAME)
 	@make fclean -C ./libft
 	@make fclean -C ./printf
 
 re: fclean all
 
-
-.PHONY: start all clean fclean re bonus
+.PHONY: start all clean fclean re
