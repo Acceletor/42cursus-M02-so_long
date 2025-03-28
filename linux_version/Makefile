@@ -68,6 +68,7 @@ $(OBJ_DIR)%.o: sources/%.c | $(OBJ_DIR)
 clean: 
 	@$(RM) -r $(OBJ_DIR)
 	@make clean -C ./libft
+	@make clean -C ./printf
 
 fclean: clean
 	@$(RM) $(NAME)
