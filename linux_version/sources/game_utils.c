@@ -6,7 +6,7 @@
 /*   By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 14:16:32 by ksuebtha          #+#    #+#             */
-/*   Updated: 2025/04/09 09:24:59 by ksuebtha         ###   ########.fr       */
+/*   Updated: 2025/04/09 09:57:43 by ksuebtha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ void	renders(t_vars *vars)
 		j = 0;
 		while (grid[i][j])
 		{
+			player_render(vars);
 			if (grid[i][j] == 'E')
 				exit_render(vars, i, j);
 			else if (grid[i][j] == 'C')
@@ -97,5 +98,4 @@ void	renders(t_vars *vars)
 		}
 		i++;
 	}
-	player_render(vars);
 }

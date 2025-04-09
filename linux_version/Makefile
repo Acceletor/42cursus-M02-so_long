@@ -6,7 +6,7 @@
 #    By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/25 15:23:19 by ksuebtha          #+#    #+#              #
-#    Updated: 2025/03/25 15:23:20 by ksuebtha         ###   ########.fr        #
+#    Updated: 2025/04/09 09:33:10 by ksuebtha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ INC = -I ./include/
 OBJ_DIR = obj/
 
 # Complier and Cflag
-CC = gcc
+CC = cc
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 
