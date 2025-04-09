@@ -6,7 +6,7 @@
 /*   By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 14:14:44 by ksuebtha          #+#    #+#             */
-/*   Updated: 2025/03/25 14:03:17 by ksuebtha         ###   ########.fr       */
+/*   Updated: 2025/04/09 09:30:01 by ksuebtha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,7 @@
 
 void	main_display(t_vars *vars)
 {
-	base_render(vars);
-	tree_render(vars);
-	collectable_render(vars);
-	exit_render(vars);
+	renders(vars);
 }
 
 int	keypress(int keycode, t_vars *vars)
@@ -32,14 +29,12 @@ int	keypress(int keycode, t_vars *vars)
 
 int	callbacks(t_vars *vars)
 {
-	mlx_clear_window(vars->mlx, vars->win);
 	main_display(vars);
 	if (count_collect(vars) == 0 && vars->end == false)
 	{
 		vars->end = true;
 		ft_printf("\033[36m[You can exit now]\033[0m\n");
 	}
-	player_render(vars);
 	if (vars->should_quit_next_frame == true)
 	{
 		vars->should_quit_next_frame = false;

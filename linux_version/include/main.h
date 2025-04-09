@@ -6,7 +6,7 @@
 /*   By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 14:16:16 by ksuebtha          #+#    #+#             */
-/*   Updated: 2025/03/25 14:05:08 by ksuebtha         ###   ########.fr       */
+/*   Updated: 2025/04/09 09:23:16 by ksuebtha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,7 @@ int		game_start(t_map *map);
 void	vars_nuller(t_vars *vars);
 void	remove_player_map(t_vars *vars);
 int		count_collect(t_vars *vars);
+void	renders(t_vars *vars);
 
 //loader
 void	load_base(t_vars *vars);
@@ -134,11 +135,11 @@ void	load_p1_at_exit(t_vars *vars, t_animation *sprite);
 void	load_p1_img(t_vars *vars);
 
 //renders
-void	base_render(t_vars *vars);
-void	tree_render(t_vars *vars);
+void	base_render(t_vars *vars, int i, int j);
+void	tree_render(t_vars *vars, int i, int j);
 void	player_render(t_vars *vars);
-void	collectable_render(t_vars *vars);
-void	exit_render(t_vars *vars);
+void	collectable_render(t_vars *vars, int i, int j);
+void	exit_render(t_vars *vars, int i, int j);
 
 //update position
 void	update_pos(t_vars *vars, int keycode, t_player *p1);

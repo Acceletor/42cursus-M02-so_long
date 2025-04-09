@@ -6,7 +6,7 @@
 /*   By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 18:10:40 by ksuebtha          #+#    #+#             */
-/*   Updated: 2025/03/25 14:02:36 by ksuebtha         ###   ########.fr       */
+/*   Updated: 2025/04/09 09:27:15 by ksuebtha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,7 @@ bool	is_map_error(char *argv, t_map *map)
 	if (fd == -1)
 		return (true);
 	what_map_size(fd, map);
-	if (map->width == map->height
-		|| map->width == 0 || map->height == 0)
+	if (map->width == 0 || map->height == 0)
 		return (true);
 	map->grid = create_map_grid(map);
 	if (!map->grid)
