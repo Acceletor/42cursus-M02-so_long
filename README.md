@@ -1,4 +1,5 @@
 # so_long
+![Alt text](./so_long_screenshot.png)
 A small 2D game created as part of the 42 School curriculum, using C and the MiniLibX graphics library.
 
 ## Project Description
@@ -11,4 +12,9 @@ The game validates input maps and provides a basic but functional game loop with
 - Learn basic 2D game concepts: map reading, player movement, collectibles, and exits.
 - Handle user input and real-time updates using event hooks.
 - Manage resources: loading and destroying images, windows, and handling memory leaks.
+
+Build:
+```bash
+make
+./so_long maps/map1.ber
 
